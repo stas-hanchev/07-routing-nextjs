@@ -25,12 +25,15 @@ interface NewNote {
     tag: NoteTag;
 }
 
-export async function fetchNotes(keyWord: string, page: number, perPage: number): Promise<FetchNotesResponse> {
+export async function fetchNotes(keyWord: string, page: number, perPage: number, tag?: string): Promise<FetchNotesResponse> {
+    if (tag === 'all') tag = undefined;
+    
     const response = await api.get<FetchNotesResponse>(`/notes`, {
         params: {
             search: keyWord,
             page,
-            perPage
+            perPage,
+            tag
         }
     });
     console.log('fetchNotes', response.data);
