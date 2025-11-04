@@ -27,7 +27,7 @@ export default function NotesClient({ initialTag }: NotesClientProps) {
     queryKey: ['notes', initialTag, page, PER_PAGE, debouncedSearch],
     queryFn: () =>
       fetchNotes(
-        search,
+        debouncedSearch,
         page,
         12,
         initialTag === 'all' ? undefined : initialTag
