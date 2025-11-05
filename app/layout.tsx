@@ -20,8 +20,8 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
       <body>
         <TanStackProvider>
           <Header />
-          {modal ?? null}
           {children}
+          {modal}
           <Footer />
         </TanStackProvider>
       </body>
